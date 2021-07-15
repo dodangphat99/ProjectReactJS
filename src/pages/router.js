@@ -2,9 +2,10 @@ import React from "react";
 
 const HomePage = React.lazy(() => import("./HomePage/HomePage"))
 const Register  = React.lazy(()=>import("./RegisterPage/Register"))
-const Login  = React.lazy(()=>import("./LoginPage/Login"))
+const Login  = React.lazy(()=>import("./LoginPage/Login.jsx"))
+const ForgotPassword  = React.lazy(()=>import("./ForgotPassword/ForgotPassword"))
 
-export default [
+const routes = [
     {
         path:"/",
         exact:true,
@@ -23,4 +24,11 @@ export default [
         public:true,
         component:Register
     },
+    {
+        path:"/forgotPassword",
+        exact:true,
+        public:true,
+        component:ForgotPassword
+    },
 ]
+export default routes;

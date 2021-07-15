@@ -1,6 +1,9 @@
-import { takeLatest ,fork,put} from 'redux-saga/effects';
-import login from './login.saga';
+import { takeLatest,all } from 'redux-saga/effects';
+import { loginUsersRequest } from './login.saga'
+import { SIGN_IN } from '../constants/login.constant'
 
 export default function* mySaga() {
-    yield fork(login);
+  yield all([
+    takeLatest(SIGN_IN, loginUsersRequest),
+  ]);
   }

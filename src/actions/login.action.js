@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_ERROR } from "../constants";
+import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_ERROR } from "../constants/index";
 
 export function signIn(payload) {
     return {
