@@ -1,31 +1,49 @@
 import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_ERROR } from "../constants";
 const initialLogin = {
-  pending: false,
-  data: [],
-  error: null,
+  loginString: "",
+  loginInformation: {
+    password: "",
+    facebookToken: "",
+    googleToken: "",
+  },
 };
-export function loginReducer(state = initialLogin, action) {
+const initialLoginSuccess = {
+  message: "",
+  data: {
+    access_token: "",
+  },
+};
+const initialLoginError = {
+  status: 0,
+  message: "",
+};
+const initial = {
+  login: initialLogin,
+  loginSuccess: initialLoginSuccess,
+  loginError: initialLoginError,
+};
+export function loginReducer(state = initial, action) {
   switch (action.type) {
-    case SIGN_IN:
+    case SIGN_IN: {
       return {
         ...state,
-        pending: true,
       };
-    case SIGN_IN_SUCCESS:
+    }
+    case SIGN_IN_SUCCESS: {
       return {
         ...state,
-        pending: false,
-        data: action.payload,
+        loginSuccess: action.payload,
       };
-    case SIGN_IN_ERROR:
+    }
+    case SIGN_IN_ERROR: {
       return {
         ...state,
-        pending: false,
-        data: action.error,
+        loginError: action.payload,
       };
+    }
     default:
       return state;
   }
-};
+}
 
-export default loginReducer
+export default loginReducer;

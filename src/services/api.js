@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import _ from "lodash";
 const BASE_URL = "https://taskeeperv2.herokuapp.com";
 
 // export const loginUser = () => {
@@ -8,8 +8,8 @@ const BASE_URL = "https://taskeeperv2.herokuapp.com";
 
 export const loginUser = (payload) => {
   return axios.post(`${BASE_URL}/auth/login`, payload).then((response) => {
-    if (response.data.access_token) {
-      localStorage.setItem("user", JSON.stringify(response.data));
+    if (_.get(response, "data.data.access_token")) {
+      localStorage.setItem("user", _.get(response, "data.data.access_token"));
     }
     return response.data;
   });
