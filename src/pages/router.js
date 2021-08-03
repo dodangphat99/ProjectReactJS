@@ -7,13 +7,13 @@ const ForgotPassword  = React.lazy(()=>import("./ForgotPassword/ForgotPassword")
 
 const routes = [
     {
-        path:"/",
+        path:"/homepage",
         exact:true,
         public:true,
         component:HomePage
     },
     {
-        path:"/login",
+        path:"/",
         exact:true,
         public:true,
         component:Login

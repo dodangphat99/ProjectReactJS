@@ -6,15 +6,15 @@ import * as action from "../../actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import i18n from "../../locales/index";
 import { useTranslation } from "react-i18next";
-import {changeThemeAction} from "../../actions";
+import { changeThemeAction } from "../../actions";
 
-import * as Style from "./styles";
+import "../../themes/StyleCommon.css";
 
 const Login = (props) => {
   const { history } = props;
   const dispatch = useDispatch();
   const login = useSelector((state) => state.loginReducer);
-  const  {theme}  = useSelector((state) => state.commonReducer);
+  const { theme } = useSelector((state) => state.commonReducer);
   console.log(theme);
   const { t } = useTranslation();
 
@@ -46,7 +46,7 @@ const Login = (props) => {
 
   return (
     <div className="ant">
-      <Style.Header>TASKEEPER</Style.Header>
+      <div className="header">TASKEEPER</div>
       <Select
         onChange={(value) => handleChangeLanguage(value)}
         value={i18n.language}
@@ -55,29 +55,31 @@ const Login = (props) => {
         <Select.Option value="en">EN</Select.Option>
       </Select>
       <Select
-          onChange={(value) => dispatch(changeThemeAction(value))}
-          value={theme}
-        >
-          <Select.Option value="light">Light</Select.Option>
-          <Select.Option value="dark">Dark</Select.Option>
-        </Select>
-      <Style.Main>
-        <Style.TitleSay>{t("login.title")}</Style.TitleSay>
+        onChange={(value) => dispatch(changeThemeAction(value))}
+        value={theme}
+      >
+        <Select.Option value="light">Light</Select.Option>
+        <Select.Option value="dark">Dark</Select.Option>
+      </Select>
+      <div className="main">
+        <nav className="titleSay">{t("login.title")}</nav>
         <nav className="description">{t("login.description")}</nav>
         <Image width={500} height={400} src={imageLogin} />
-      </Style.Main>
-      <Style.LoginForm
+      </div>
+      <Form
         name="normal_login"
+        className="login-form"
         initialValues={{
           remember: true,
         }}
         onFinish={onFinish}
       >
-        <Style.View.Item>
-          <Style.Title>{t("login.signIn")}</Style.Title>
-        </Style.View.Item>
-        <Style.View.Item
+        <Form.Item className="titleView">
+          <p className="title">{t("login.signIn")}</p>
+        </Form.Item>
+        <Form.Item
           name="email"
+          className="view"
           rules={[
             {
               required: true,
@@ -85,10 +87,11 @@ const Login = (props) => {
             },
           ]}
         >
-          <Style.Email />
-        </Style.View.Item>
-        <Style.View.Item
+          <Input className="email" />
+        </Form.Item>
+        <Form.Item
           name="password"
+          className="view"
           rules={[
             {
               required: true,
@@ -96,39 +99,43 @@ const Login = (props) => {
             },
           ]}
         >
-          <Style.Password type="password" />
-        </Style.View.Item>
+          <Input className="password" type="password" />
+        </Form.Item>
         <Form.Item>
-          <Style.LoginFormForgot to="/forgotPassword">
+          <Link className="login-form-forgot" to="/forgotPassword">
             {t("login.forgotPassword")}
-          </Style.LoginFormForgot>
+          </Link>
         </Form.Item>
 
         <Form.Item>
-          <Style.LoginFormButton type="primary" htmlType="submit">
-            <Style.SignInText>{t("login.buttonSignIn")}</Style.SignInText>
-          </Style.LoginFormButton>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+          >
+            <p className="signInText">{t("login.buttonSignIn")}</p>
+          </Button>
         </Form.Item>
-        <Style.SignWithOther.Item>
-          <Style.SignWithOtherText>{t("login.other")}</Style.SignWithOtherText>
-        </Style.SignWithOther.Item>
-        <Style.FormSignWithOther>
-          <Style.SignWithFacebook.Item>
-            <Style.SignWithText>f</Style.SignWithText>
-          </Style.SignWithFacebook.Item>
-          <Style.SignWithGoogle.Item>
-            <Style.SignWithText>G</Style.SignWithText>
-          </Style.SignWithGoogle.Item>
-        </Style.FormSignWithOther>
-        <Style.SignUpButton.Item>
-          <Style.ButtonText>
+        <Form.Item className="signWithOther">
+          <p className="signWithOtherText">{t("login.other")}</p>
+        </Form.Item>
+        <div className="formSignWithOther">
+          <Form.Item className="signWithFb">
+            <p className="signWithText">f</p>
+          </Form.Item>
+          <Form.Item className="signWithGoogle">
+            <p className="signWithText">G</p>
+          </Form.Item>
+        </div>
+        <Form.Item className="signUpButton">
+          <p className="buttonText">
             {t("login.question")}
-            <Style.SignUpButtonText to="/register">
+            <Link className="signUpButtonText" to="/register">
               {t("login.signUp")}
-            </Style.SignUpButtonText>
-          </Style.ButtonText>
-        </Style.SignUpButton.Item>
-      </Style.LoginForm>
+            </Link>
+          </p>
+        </Form.Item>
+      </Form>
     </div>
   );
 };
