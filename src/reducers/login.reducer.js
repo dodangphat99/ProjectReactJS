@@ -33,12 +33,16 @@ export function loginReducer(state = initial, action) {
       return {
         ...state,
         loginSuccess: action.payload,
+        loginError:{
+          status:0
+        }
       };
     }
     case SIGN_IN_ERROR: {
       return {
         ...state,
         loginError: action.payload,
+        loginSuccess:""
       };
     }
     default:

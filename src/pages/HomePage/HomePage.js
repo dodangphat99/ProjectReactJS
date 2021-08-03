@@ -1,21 +1,18 @@
 import React, {useEffect} from "react";
-import { useHistory,Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import {Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 const HomePage = (props) => {
-  const result = useSelector((state) => state.loginReducer.SIGN_IN_SUCCESS);
-  const history = useHistory();
+  const {history} = props;
   useEffect(() => {
     const token = localStorage.getItem("user");
-    if(token !=null){
-      console.log("Đăng nhập thành công") 
-    }
-  },[result])
-  console.log(result)
+    var decoded = jwt_decode(token);
+    console.log(decoded)
+  },[])
   //const handleOnClick = useCallback(() => history.push("/login"), [history]);
   const logOut = () =>{
     localStorage.removeItem("user");
-    history.push("/login");
+    history.goBack();
   }
   return (
     <div style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>

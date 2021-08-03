@@ -8,7 +8,6 @@ import { signInSuccess,signInError } from '../actions/index';
 export function* loginUsersRequest(action) {
     try {
         const response = yield call(loginUser, action.payload)
-        console.log(response)
         yield put(signInSuccess(response));
         return;
     } catch (errors) {

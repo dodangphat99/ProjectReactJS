@@ -1,0 +1,14 @@
+{
+  "login": {
+    "title": "chào mừng đến với chúng tôi",
+    "description":"Tìm công việc phù hợp với bạn ở đâu",
+    "signIn":"Đăng Nhập",
+    "forgotPassword":"Quên mật khẩu",
+    "buttonSignIn":"ĐĂNG NHẬP",
+    "other":"Hoặc đăng nhập với",
+    "question":"Bạn không có tài khoản? ",
+    "signUp":"Đăng ký",
+    "messageEmail":"Vui lòng nhập Email hoặc số điện thoại!",
+    "messagePassword":"Vui lòng nhập mật khẩu!"
+  }
+}
