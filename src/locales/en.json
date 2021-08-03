@@ -1,0 +1,14 @@
+{
+  "login": {
+    "title": "WELCOME TO US",
+    "description":"Where to find the suitable job for you",
+    "signIn":"Sign In",
+    "forgotPassword":"Forgot password",
+    "buttonSignIn":"SIGN IN",
+    "other":"Or sign in with",
+    "question":"Don't have an account? ",
+    "signUp":"Sign up",
+    "messageEmail":"Please input your Email or Phone!",
+    "messagePassword":"Please input your Password!"
+  }
+}
