@@ -1,7 +1,5 @@
 export const darkTheme = {
-  login: {
-    backgroundBody: "black",
-    colorTitle:"white",
-    colorDescription:"white"
+  homepage: {
+    header: "#002329",
   },
 };

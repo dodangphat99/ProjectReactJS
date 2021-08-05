@@ -10,5 +10,8 @@
     "signUp":"Đăng ký",
     "messageEmail":"Vui lòng nhập Email hoặc số điện thoại!",
     "messagePassword":"Vui lòng nhập mật khẩu!"
+  },
+  "header":{
+    "logOut":"Đăng Xuất"
   }
 }
