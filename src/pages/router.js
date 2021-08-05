@@ -1,6 +1,6 @@
 import React from "react";
 
-const HomePage = React.lazy(() => import("./HomePage/HomePage"))
+const HomePage = React.lazy(() => import("./HomePage/HomePage.jsx"))
 const Register  = React.lazy(()=>import("./RegisterPage/Register"))
 const Login  = React.lazy(()=>import("./LoginPage/Login.jsx"))
 const ForgotPassword  = React.lazy(()=>import("./ForgotPassword/ForgotPassword"))

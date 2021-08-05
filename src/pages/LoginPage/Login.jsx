@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Form, Input, Button, Image, Select } from "antd";
+import { Form,  Image } from "antd";
 import imageLogin from "../../assets/images/login.png";
 import * as action from "../../actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import i18n from "../../locales/index";
 import { useTranslation } from "react-i18next";
-import { changeThemeAction } from "../../actions";
-
-import "../../themes/StyleCommon.css";
+import * as Style from "./styles";
 
 const Login = (props) => {
   const { history } = props;
   const dispatch = useDispatch();
   const login = useSelector((state) => state.loginReducer);
-  const { theme } = useSelector((state) => state.commonReducer);
-  console.log(theme);
   const { t } = useTranslation();
 
   const onFinish = (values) => {
@@ -28,58 +24,39 @@ const Login = (props) => {
       },
     };
     dispatch(action.signIn(data));
+    console.log(data);
   };
 
   useEffect(() => {
     const token = localStorage.getItem("user");
     if (token != null) {
       alert("Đăng nhập thành công");
-      history.push("/");
+      history.push("/homepage");
     } else if (login.loginError.status != 0) {
       alert(login.loginError.message);
     }
   }, [login.loginError]);
 
-  function handleChangeLanguage(value) {
-    i18n.changeLanguage(value);
-  }
-
   return (
     <div className="ant">
-      <div className="header">TASKEEPER</div>
-      <Select
-        onChange={(value) => handleChangeLanguage(value)}
-        value={i18n.language}
-      >
-        <Select.Option value="vi">VI</Select.Option>
-        <Select.Option value="en">EN</Select.Option>
-      </Select>
-      <Select
-        onChange={(value) => dispatch(changeThemeAction(value))}
-        value={theme}
-      >
-        <Select.Option value="light">Light</Select.Option>
-        <Select.Option value="dark">Dark</Select.Option>
-      </Select>
-      <div className="main">
-        <nav className="titleSay">{t("login.title")}</nav>
-        <nav className="description">{t("login.description")}</nav>
+      <Style.Header>TASKEEPER</Style.Header>
+      <Style.Main>
+        <Style.TitleSay>{t("login.title")}</Style.TitleSay>
+        <Style.Description>{t("login.description")}</Style.Description>
         <Image width={500} height={400} src={imageLogin} />
-      </div>
-      <Form
+      </Style.Main>
+      <Style.LoginForm
         name="normal_login"
-        className="login-form"
         initialValues={{
           remember: true,
         }}
         onFinish={onFinish}
       >
-        <Form.Item className="titleView">
-          <p className="title">{t("login.signIn")}</p>
-        </Form.Item>
-        <Form.Item
+        <Style.TitleView>
+          <Style.Title>{t("login.signIn")}</Style.Title>
+        </Style.TitleView>
+        <Style.TitleView
           name="email"
-          className="view"
           rules={[
             {
               required: true,
@@ -87,11 +64,10 @@ const Login = (props) => {
             },
           ]}
         >
-          <Input className="email" />
-        </Form.Item>
-        <Form.Item
+          <Style.Email/>
+        </Style.TitleView>
+        <Style.TitleView
           name="password"
-          className="view"
           rules={[
             {
               required: true,
@@ -99,43 +75,42 @@ const Login = (props) => {
             },
           ]}
         >
-          <Input className="password" type="password" />
-        </Form.Item>
+          <Style.Password type="password" />
+        </Style.TitleView>
         <Form.Item>
-          <Link className="login-form-forgot" to="/forgotPassword">
+          <Style.LoginFormForgot to="/forgotPassword">
             {t("login.forgotPassword")}
-          </Link>
+          </Style.LoginFormForgot>
         </Form.Item>
 
         <Form.Item>
-          <Button
+          <Style.LoginFormButton
             type="primary"
             htmlType="submit"
-            className="login-form-button"
           >
-            <p className="signInText">{t("login.buttonSignIn")}</p>
-          </Button>
+            <Style.SignInText>{t("login.buttonSignIn")}</Style.SignInText>
+          </Style.LoginFormButton>
         </Form.Item>
-        <Form.Item className="signWithOther">
-          <p className="signWithOtherText">{t("login.other")}</p>
-        </Form.Item>
-        <div className="formSignWithOther">
-          <Form.Item className="signWithFb">
-            <p className="signWithText">f</p>
-          </Form.Item>
-          <Form.Item className="signWithGoogle">
-            <p className="signWithText">G</p>
-          </Form.Item>
-        </div>
-        <Form.Item className="signUpButton">
-          <p className="buttonText">
+        <Style.SignWithOther>
+          <Style.SignWithOtherText>{t("login.other")}</Style.SignWithOtherText>
+        </Style.SignWithOther>
+        <Style.FormSignWithOther>
+          <Style.SignWithFacebook >
+            <Style.SignWithTextFb>f</Style.SignWithTextFb>
+          </Style.SignWithFacebook>
+          <Style.SignWithGoogle>
+            <Style.SignWithTextGoogle>G</Style.SignWithTextGoogle>
+          </Style.SignWithGoogle>
+        </Style.FormSignWithOther>
+        <Style.SignUpButton>
+          <Style.ButtonText>
             {t("login.question")}
-            <Link className="signUpButtonText" to="/register">
+            <Style.SignUpButtonText to="/register">
               {t("login.signUp")}
-            </Link>
-          </p>
-        </Form.Item>
-      </Form>
+            </Style.SignUpButtonText>
+          </Style.ButtonText>
+        </Style.SignUpButton>
+      </Style.LoginForm>
     </div>
   );
 };

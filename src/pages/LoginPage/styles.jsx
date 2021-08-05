@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Select, Form, Button } from "antd";
+import { Select, Form, Button,Input } from "antd";
 import { Link } from "react-router-dom";
 
-export const TitleView = styled(Form)`
+export const TitleView = styled(Form.Item)`
   height: 80px;
 `;
 
@@ -34,7 +34,7 @@ export const TitleSay = styled.nav`
   font-style: normal;
   font-weight: normal;
   font-size: 42px;
-  color: #000000;
+  color:  black;
 `;
 
 export const Description = styled.nav`
@@ -42,11 +42,13 @@ export const Description = styled.nav`
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
-  color: #000000;
+  color:black;
 `;
 
 export const LoginForm = styled(Form)`
-  margin-bottom: 0 !important;
+  .ant-form-item{
+    margin-bottom: 0px !important;
+  }
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -69,7 +71,7 @@ export const Title = styled.p`
   margin-top: 22px;
 `;
 
-export const Email = styled(Form)`
+export const Email = styled(Input)`
   margin-bottom: 0px !important;
   width: 409px;
   height: 52px;
@@ -78,8 +80,7 @@ export const Email = styled(Form)`
   border-radius: 8px;
 `;
 
-export const Password = styled(Form)`
-  margin-bottom: 0px !important;
+export const Password = styled(Input)`
   width: 409px;
   height: 52px;
   border: 1px solid #000000;
@@ -109,11 +110,9 @@ export const LoginFormForgot = styled(Link)`
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-  margin-top: 0;
 `;
 
 export const LoginFormButton = styled(Button)`
-  margin-top: 10px;
   background: #2d7474;
   border-radius: 12px;
   width: 243px;
@@ -130,7 +129,7 @@ export const SignInText = styled.p`
   padding-top: 5px;
 `;
 
-export const SignWithOther = styled(Form)`
+export const SignWithOther = styled.div`
   margin-top: 10px;
 `;
 
@@ -140,7 +139,7 @@ export const SignWithOtherText = styled.p`
   font-size: 16px;
 `;
 
-export const SignWithFacebook = styled(Form)`
+export const SignWithFacebook = styled.div`
   width: 72px;
   height: 72px;
   background: #256aba;
@@ -156,9 +155,10 @@ export const FormSignWithOther = styled.div`
   justify-content: space-between;
 `;
 
-export const SignWithText = styled.p`
+export const SignWithTextFb = styled.p`
   display: flex;
-  justify-content: center;
+  text-align: center;
+  padding-left: 29px;
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -166,16 +166,27 @@ export const SignWithText = styled.p`
   color: #ffffff;
 `;
 
-export const SignWithGoogle = styled(Form)`
+export const SignWithTextGoogle = styled.p`
+  display: flex;
+  text-align: center;
+  padding-left: 24px;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  color: #ffffff;
+`;
+
+export const SignWithGoogle = styled.div`
+  background: #ea4335;
   width: 72px;
   height: 72px;
-  background: #ea4335;
   display: flex;
   border-radius: 50px;
   padding-top: 11px;
 `;
 
-export const SignUpButton = styled(Form)`
+export const SignUpButton = styled.div`
   margin-top: 20px;
 `;
 

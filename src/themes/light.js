@@ -1,7 +1,5 @@
 export const lightTheme = {
-  login: {
-    backgroundBody: "white",
-    colorTitle: "black",
-    colorDescription: "black",
+  homepage: {
+    header: "#006d75",
   },
 };

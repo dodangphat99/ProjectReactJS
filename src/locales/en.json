@@ -10,5 +10,8 @@
     "signUp":"Sign up",
     "messageEmail":"Please input your Email or Phone!",
     "messagePassword":"Please input your Password!"
+  },
+  "header":{
+    "logOut":"Log Out"
   }
 }
