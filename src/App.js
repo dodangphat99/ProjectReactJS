@@ -8,10 +8,14 @@ import i18n from "./locales/index";
 
 import DefaultLayout from "./components/DefaultLayout";
 import FullLayout from "./components/FullLayout";
+import Layout from "./components/AdminLayout/layout/Layout";
 
 import HomePage from "./pages/HomePage/HomePage";
 import Login from "./pages/LoginPage/Login";
 import Register from "./pages/RegisterPage/Register";
+import Dashboard from "./pages/adminPage/Dashboard";
+import Customers from "./pages/adminPage/Customers";
+import Products from "./pages/adminPage/Products";
 
 import { lightTheme, darkTheme } from "./themes/index";
 
@@ -35,6 +39,9 @@ export default function App() {
           <Switch>
             <FullLayout exact path="/" component={Login} />
             <FullLayout exact path="/register" component={Register} />
+            <Layout exact path="/dashboard" component={Dashboard} />
+            <Layout exact path="/products" component={Products} />
+            <Layout exact path="/customers" component={Customers} />
             <DefaultLayout exact path="/homepage" component={HomePage} />
           </Switch>
         </Router>
