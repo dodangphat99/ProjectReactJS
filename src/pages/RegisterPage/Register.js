@@ -9,13 +9,13 @@ import { useTranslation } from "react-i18next";
 const Register = (props) => {
   const { history } = props;
   const dispatch = useDispatch();
-  const login = useSelector((state) => state.loginReducer);
+  const register = useSelector((state) => state.registerReducer);
   const { t } = useTranslation();
 
   const onFinish = (values) => {
     const data = {
-      loginString: values.email,
-      loginInformation: {
+      registerString: values.email,
+      registerInformation: {
         Fullname: values.Fullname,
         password: values.password,
         Dateofbirth: values.Dateofbirth,
