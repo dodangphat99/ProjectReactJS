@@ -8,13 +8,14 @@
     "@testing-library/user-event": "^12.1.10",
     "@types/lodash": "^4.14.171",
     "antd": "^4.16.7",
+    "apexcharts": "^3.27.3",
     "axios": "^0.21.1",
     "history": "^4.10.1",
     "i18next": "^20.3.5",
     "i18next-http-backend": "^1.3.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
-    "react-apexcharts": "^1.3.9",
+    "react-apexcharts": "1.3.6",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.11.4",
     "react-redux": "^7.2.4",
@@ -24,6 +25,7 @@
     "redux-saga": "^1.1.3",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.0",
+    "vue": "^2.6.14",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
