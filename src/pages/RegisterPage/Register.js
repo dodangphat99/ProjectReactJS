@@ -1,10 +1,11 @@
-import React from "react";
+import React,  { useEffect } from "react";
 import * as Style from "./styles";
 import { Image } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import imageRegister from "../../assets/images/register.png";
 import * as action from "../../actions/index";
 import { useTranslation } from "react-i18next";
+import Login from "./pages/LoginPage/Login";
 
 const Register = (props) => {
   const { history } = props;
@@ -25,6 +26,17 @@ const Register = (props) => {
     dispatch(action.registerSuccess(data));
     console.log(data);
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("user");
+    if (token != null) {
+      alert("Đăng kí thành công");
+      history.push("/registerpage");
+    } else if (register.registerError.status != 0) {
+      alert(register.registerError.message);
+    }
+  }, [register.registerError]);
+
 
   return (
     <div className="ant">
