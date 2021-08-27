@@ -1,17 +1,17 @@
-import React,  { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as Style from "./styles";
 import { Image } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import imageRegister from "../../assets/images/register.png";
 import * as action from "../../actions/index";
 import { useTranslation } from "react-i18next";
-import Login from "./pages/LoginPage/Login";
 
 const Register = (props) => {
   const { history } = props;
   const dispatch = useDispatch();
   const register = useSelector((state) => state.registerReducer);
   const { t } = useTranslation();
+  const [value, setValue] = useState();
 
   const onFinish = (values) => {
     const data = {
@@ -21,22 +21,27 @@ const Register = (props) => {
         password: values.password,
         Dateofbirth: values.Dateofbirth,
         PhoneNumber: values.PhoneNumber,
+        Sex: value,
       },
     };
     dispatch(action.registerSuccess(data));
     console.log(data);
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("user");
-    if (token != null) {
-      alert("Đăng kí thành công");
-      history.push("/registerpage");
-    } else if (register.registerError.status != 0) {
-      alert(register.registerError.message);
-    }
-  }, [register.registerError]);
+  const onChange = (e) => {
+    console.log("radio checked", e.target.value);
+    setValue(e.target.value);
+  };
 
+  // useEffect(() => {
+  //   const token = localStorage.getItem("user");
+  //   if (token != null) {
+  //     alert("Đăng kí thành công");
+  //     history.push("/registerpage");
+  //   } else if (register.registerError.status != 0) {
+  //     alert(register.registerError.message);
+  //   }
+  // }, [register.registerError]);
 
   return (
     <div className="ant">
@@ -49,7 +54,6 @@ const Register = (props) => {
           src={imageRegister}
         />
       </Style.Leftpage>
-      
 
       <Style.Title></Style.Title>
 
@@ -85,7 +89,6 @@ const Register = (props) => {
           >
             <Style.Email placeholder="Email" />
           </Style.TitleView>
-          
         </div>
 
         <Style.TitleView
@@ -95,6 +98,7 @@ const Register = (props) => {
               required: true,
               message: "Please input your password!",
             },
+            
           ]}
         >
           <Style.Password placeholder="Password" />
@@ -112,40 +116,51 @@ const Register = (props) => {
           <Style.RePassword placeholder="Repassword" />
         </Style.TitleView>
         <div style={{ display: "flex" }}>
-        <Style.TitleView
-          name="dateofbirth"
-          rules={[
-            {
-              required: true,
-              message: "Please input your date of birth!",
-            },
-          ]}
-        >
-          <Style.Dateofbirth placeholder="Date of birth" />
-        </Style.TitleView>
-
-        <Style.TitleView
-          name="phonenumber"
-          rules={[
-            {
-              required: true,
-              message: "Please input your phone number!",
-            },
-          ]}
-        >
-          <Style.PhoneNumber placeholder="Phone Number" />
-        </Style.TitleView>
-        </div>
-        
-          <Style.RegisterFormButton
-            type="primary"
-            htmlType="submit"
+          <Style.TitleView
+            name="dateofbirth"
+            rules={[
+              {
+                required: true,
+                message: "Please input your date of birth!",
+              },
+            ]}
           >
-            <Style.RegisterText>REGISTER</Style.RegisterText>
-          </Style.RegisterFormButton>
+            <Style.Dateofbirth placeholder="Date of birth" />
+          </Style.TitleView>
 
-        
+          <Style.TitleView
+            name="phonenumber"
+            rules={[
+              {
+                required: true,
+                message: "Please input your phone number!",
+              },
+            ]}
+          >
+            <Style.PhoneNumber placeholder="Phone Number" />
+          </Style.TitleView>
 
+        </div>
+
+        <Style.TitleView
+            name="sex"
+            rules={[
+              {
+                required: true,
+                message: "Please choose sex!",
+              },
+            ]}
+          >
+            <Style.SexButton.Group onChange={onChange} value={value}>
+              <Style.SexButton value={"male"}>Male</Style.SexButton>
+              <Style.SexButton value={"female"}>Female</Style.SexButton>
+              <Style.SexButton value={"other"}>Other</Style.SexButton>
+            </Style.SexButton.Group>
+          </Style.TitleView>
+
+        <Style.RegisterFormButton type="primary" htmlType="submit">
+          <Style.RegisterText>REGISTER</Style.RegisterText>
+        </Style.RegisterFormButton>
       </Style.RegisterForm>
     </div>
   );

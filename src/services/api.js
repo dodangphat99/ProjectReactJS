@@ -15,6 +15,11 @@ export const loginUser = (payload) => {
   });
 };
 
+export const RegisterUser = (payload) => {
+  return  axios.post(`${BASE_URL}/users/create`,payload)
+};
+
+
 export const logout = () => {
   localStorage.removeItem("user");
 };

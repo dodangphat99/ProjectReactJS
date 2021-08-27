@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { Select, Form, Button,Input } from "antd";
+import { Radio , Form, Button,Input } from "antd";
 
 export const TitleView = styled(Form.Item)`
   height: 80px;
+  margin-top:10px
 `;
 
 export const Leftpage = styled.div`
-  width: 576px;
+  width: 35%;
   height: 1024px;
   left: 0px;
   top: 0px;
@@ -14,7 +15,7 @@ export const Leftpage = styled.div`
 `;
 export const Title = styled.div`
   position: absolute;
-  width: 418px;
+  width: 20%;
   height: 80px;
   left: 0px;
   top: 100px;
@@ -155,4 +156,13 @@ export const TitleInput = styled(Form)`
   line-height: 24px;
   color: #000000;
   background-color: white;
+`;
+
+export const SexButton = styled(Radio)`
+  border-radius: 12px;
+  width: 243px;
+  height: 49px;
+  justify-content: center;
+  margin-bottom: 0;
+  top:150px
 `;
