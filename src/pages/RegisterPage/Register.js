@@ -1,47 +1,38 @@
 import React, { useEffect, useState } from "react";
 import * as Style from "./styles";
-import { Image } from "antd";
+import { Image, Space } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import imageRegister from "../../assets/images/register.png";
 import * as action from "../../actions/index";
 import { useTranslation } from "react-i18next";
+import { UserOutlined, MailOutlined, PhoneOutlined  } from '@ant-design/icons';
+
 
 const Register = (props) => {
   const { history } = props;
   const dispatch = useDispatch();
   const register = useSelector((state) => state.registerReducer);
   const { t } = useTranslation();
-  const [value, setValue] = useState();
 
   const onFinish = (values) => {
     const data = {
-      registerString: values.email,
       registerInformation: {
-        Fullname: values.Fullname,
-        password: values.password,
-        Dateofbirth: values.Dateofbirth,
-        PhoneNumber: values.PhoneNumber,
-        Sex: value,
+        first_name: values.firstName,
+        last_name: values.lastName,
+        email: values.email,
+        phone_number: values.PhoneNumber,
+        day:'23',
+        month:'08',
+        year:'1999',
       },
     };
     dispatch(action.registerSuccess(data));
     console.log(data);
   };
 
-  const onChange = (e) => {
-    console.log("radio checked", e.target.value);
-    setValue(e.target.value);
-  };
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("user");
-  //   if (token != null) {
-  //     alert("Đăng kí thành công");
-  //     history.push("/registerpage");
-  //   } else if (register.registerError.status != 0) {
-  //     alert(register.registerError.message);
-  //   }
-  // }, [register.registerError]);
+  useEffect(() => {
+    dispatch(action.national());
+  }, [dispatch]);
 
   return (
     <div className="ant">
@@ -55,8 +46,6 @@ const Register = (props) => {
         />
       </Style.Leftpage>
 
-      <Style.Title></Style.Title>
-
       <Style.RegisterForm
         name="normal_register"
         initialValues={{
@@ -65,19 +54,29 @@ const Register = (props) => {
         onFinish={onFinish}
       >
         <Style.Signup>Sign up to Taskeeper</Style.Signup>
-        <div style={{ display: "flex" }}>
+        <Style.Rightpage>
           <Style.TitleView
-            name="fullname"
+            name="firstname"
             rules={[
               {
                 required: true,
-                message: "Please input your full name!",
+                message: "Please input your first name!",
               },
             ]}
           >
-            <Style.Fullname placeholder="FullName" />
+            <Style.Firstname placeholder="First Name"  prefix={<UserOutlined style={{marginLeft:"10px", marginRight:"10px"}}/>} size="large"/>
           </Style.TitleView>
-
+          <Style.TitleView
+            name="lastname"
+            rules={[
+              {
+                required: true,
+                message: "Please input your last name!",
+              },
+            ]}
+          >
+            <Style.Lastname placeholder="Last Name" prefix={<UserOutlined style={{marginLeft:"10px", marginRight:"10px"}}/>} size="large" />
+          </Style.TitleView>
           <Style.TitleView
             name="email"
             rules={[
@@ -87,47 +86,21 @@ const Register = (props) => {
               },
             ]}
           >
-            <Style.Email placeholder="Email" />
+            <Style.Email placeholder="Email" prefix={<MailOutlined style={{marginLeft:"10px", marginRight:"10px"}} />} size="large" />
           </Style.TitleView>
-        </div>
-
-        <Style.TitleView
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-            
-          ]}
-        >
-          <Style.Password placeholder="Password" />
-        </Style.TitleView>
-
-        <Style.TitleView
-          name="repassword"
-          rules={[
-            {
-              required: true,
-              message: "Please input your Repassword!",
-            },
-          ]}
-        >
-          <Style.RePassword placeholder="Repassword" />
-        </Style.TitleView>
-        <div style={{ display: "flex" }}>
+          <Space direction="vertical">
           <Style.TitleView
-            name="dateofbirth"
+            name="password"
             rules={[
               {
                 required: true,
-                message: "Please input your date of birth!",
+                message: "Please input your password!",
               },
             ]}
           >
-            <Style.Dateofbirth placeholder="Date of birth" />
+            <Style.Password placeholder="Password" />
           </Style.TitleView>
-
+          </Space>
           <Style.TitleView
             name="phonenumber"
             rules={[
@@ -137,26 +110,9 @@ const Register = (props) => {
               },
             ]}
           >
-            <Style.PhoneNumber placeholder="Phone Number" />
+            <Style.PhoneNumber placeholder="Phone Number" prefix={<PhoneOutlined style={{marginLeft:"10px", marginRight:"10px"}} />} size="large"/>
           </Style.TitleView>
-
-        </div>
-
-        <Style.TitleView
-            name="sex"
-            rules={[
-              {
-                required: true,
-                message: "Please choose sex!",
-              },
-            ]}
-          >
-            <Style.SexButton.Group onChange={onChange} value={value}>
-              <Style.SexButton value={"male"}>Male</Style.SexButton>
-              <Style.SexButton value={"female"}>Female</Style.SexButton>
-              <Style.SexButton value={"other"}>Other</Style.SexButton>
-            </Style.SexButton.Group>
-          </Style.TitleView>
+        </Style.Rightpage>
 
         <Style.RegisterFormButton type="primary" htmlType="submit">
           <Style.RegisterText>REGISTER</Style.RegisterText>

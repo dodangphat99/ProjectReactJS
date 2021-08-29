@@ -1,7 +1,12 @@
-import { Space, Button } from "antd";
+import { Space, Button,Image } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Homeicon from '../../assets/icon/icons8-home-50.png'
+import Manageicon from '../../assets/icon/icons8-management-50.png'
+import Mapicon from '../../assets/icon/icons8-map-50.png'
+import Notifyicon from '../../assets/icon/icons8-notification-50.png'
+import Menudown from '../../assets/icon/icons8-pull-down-50.png'
 
 import i18n from "../../locales/index";
 import { changeThemeAction } from "../../actions";
@@ -24,6 +29,10 @@ function Header(props) {
     localStorage.removeItem("user");
     history.goBack();
   };
+
+  function bam(){
+    alert("alo")
+  }
 
   return (
     <Style.HeaderContainer>

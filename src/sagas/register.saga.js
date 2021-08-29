@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 import * as action from '../actions/index';
-import { RegisterUser } from '../services/api'
-import { registerSuccess,registerError } from '../actions/index';
+import { RegisterUser, countryNumber } from '../services/api'
+import { registerSuccess,registerError,nationalSuccess,nationalError } from '../actions/index';
 
 
 
@@ -18,3 +18,21 @@ export function* registerUsersRequest(action) {
         yield put(registerError(result));
     }
 }
+
+export function* countryNumberRequest() {
+    try {
+        console.log("saga")
+        const response = yield call(countryNumber)
+        yield put(nationalSuccess(response.data.data));
+        return;
+    } catch (errors) {
+        const result = {
+            status: 400,
+            message: "Faillll"
+        }
+        yield put(nationalError(result));
+    }
+}
+
+
+
