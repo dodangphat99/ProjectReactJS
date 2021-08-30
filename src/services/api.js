@@ -15,6 +15,16 @@ export const loginUser = (payload) => {
   });
 };
 
+export const RegisterUser = (payload) => {
+  return  axios.post(`${BASE_URL}/users/create`,payload)
+};
+
+export const countryNumber = () => {
+  return  axios.get(`${BASE_URL}/codetables/isdcode?languageCode=en_US`)
+};
+
+
+
 export const logout = () => {
   localStorage.removeItem("user");
 };
