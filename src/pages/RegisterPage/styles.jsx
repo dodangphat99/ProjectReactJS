@@ -9,13 +9,13 @@ export const TitleView = styled(Form.Item)`
 
 export const Leftpage = styled.div`
   width: 35%;
-  height: 1052px;
+  height: 100vh;
   left: 0px;
   top: 0px;
   background: #add2c9;
 `;
 export const Title = styled.div`
-  width: 20%;
+  width: 10vw;
   height: 100px;
   left: 0px;
   top: 100px;
@@ -30,7 +30,7 @@ export const Title = styled.div`
 
 export const Signup = styled.div`
   position: absolute;
-  width: 500px;
+  width: 40vw;
   height: 56px;
   top: 60px;
  
@@ -66,7 +66,7 @@ export const RegisterForm = styled(Form)`
   top: 110px;
   right: 130px;
   height: calc(100vh - 200px);
-  width: 1000px;
+  width: 50vw;
   border: 1px solid #c4c4c4;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
@@ -75,50 +75,50 @@ export const RegisterForm = styled(Form)`
 
 export const Firstname = styled(Input)`
   margin-bottom: 0px !important;
-  width: 770px;
+  width: 40vw;
   height: 52px;
   margin-right:15px;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 8px;
-  margin-left:45px;
+  margin-left:30px;
 `;
 
 export const Lastname = styled(Input)`
 margin-bottom: 0px !important;
-  width: 770px;
+  width: 40vw;
   height: 52px;
   margin-right:15px;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 8px;
-  margin-left:45px;
+  margin-left:30px;
 `;
 
 export const Email = styled(Input)`
-  width: 770px;
+  width: 40vw;
   height: 52px;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 8px;
-  margin-left:45px;
+  margin-left:30px;
 `;
 
 export const Password = styled(Input.Password)`
-  width: 770px;
+  width: 40vw;
   height: 52px;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 8px;
-  margin-left:45px;
+  margin-left:30px;
 `;
 
 export const PhoneNumber = styled(Input)`
-  width: 770px;
+  width: 40vw;
   height: 52px;
   border: 1px solid #000000;
   box-sizing: border-box;
-  margin-left:45px;
+  margin-left:30px;
   border-radius: 8px;
 `;
 
@@ -126,11 +126,11 @@ export const PhoneNumber = styled(Input)`
 export const RegisterFormButton = styled(Button)`
   background: #2d7474;
   border-radius: 12px;
-  width: 243px;
-  height: 49px;
+  width: 10vw;
+  height: 5vh;
   justify-content: center;
   margin-bottom: 0;
-  top:110px;
+  top:5%;
 `;
 
 
