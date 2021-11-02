@@ -1,9 +1,16 @@
-import { REGISTER, REGISTER_SUCCESS, REGISTER_ERROR,  GET_NATIONAL_REQUEST, GET_NATIONAL_SUCCESS,GET_NATIONAL_ERROR } from "../constants";
+import {
+  REGISTER,
+  REGISTER_SUCCESS,
+  REGISTER_ERROR,
+  GET_NATIONAL_REQUEST,
+  GET_NATIONAL_SUCCESS,
+  GET_NATIONAL_ERROR,
+} from "../constants";
 const initialRegister = {
   registerString: "",
   registerInformation: {
-    fullname:"",
-    email:"",
+    fullname: "",
+    email: "",
     password: "",
     dateofbirth: "",
     phonenumber: "",
@@ -23,10 +30,8 @@ const initial = {
   register: initialRegister,
   registerSuccess: initialRegisterSuccess,
   registerError: initialRegisterError,
-  nation: []
+  nation: [],
 };
-
-
 
 export function registerReducer(state = initial, action) {
   switch (action.type) {
@@ -39,16 +44,16 @@ export function registerReducer(state = initial, action) {
       return {
         ...state,
         registerSuccess: action.payload,
-        registerError:{
-          status:0
-        }
+        registerError: {
+          status: 0,
+        },
       };
     }
     case REGISTER_ERROR: {
       return {
         ...state,
         registerError: action.payload,
-        registerSuccess:""
+        registerSuccess: "",
       };
     }
     case GET_NATIONAL_REQUEST: {
@@ -57,7 +62,6 @@ export function registerReducer(state = initial, action) {
       };
     }
     case GET_NATIONAL_SUCCESS: {
-      console.log("reducer",action.payload)
       return {
         ...state,
         nation: action.payload,
@@ -70,12 +74,9 @@ export function registerReducer(state = initial, action) {
       };
     }
 
-
     default:
       return state;
   }
 }
-
-
 
 export default registerReducer;
