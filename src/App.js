@@ -23,29 +23,39 @@ import "./App.css";
 import "antd/dist/antd.css";
 
 import { Skeleton } from "antd";
+import EditUser from "./pages/adminPage/EditUser";
 
 const THEME = {
-  light: lightTheme,
-  dark: darkTheme,
+    light: lightTheme,
+    dark: darkTheme,
 };
 
 export default function App() {
-  const { theme } = useSelector((state) => state.commonReducer);
+    const { theme } = useSelector((state) => state.commonReducer);
 
-  return (
-    <ThemeProvider theme={THEME[theme]}>
-      <I18nextProvider i18n={i18n}>
-        <Router history={createBrowserHistory()}>
-          <Switch>
-            <FullLayout exact path="/" component={Login} />
-            <FullLayout exact path="/register" component={Register} />
-            <Layout exact path="/dashboard" component={Dashboard} />
-            <Layout exact path="/products" component={Products} />
-            <Layout exact path="/customers" component={Customers} />
-            <DefaultLayout exact path="/homepage" component={HomePage} />
-          </Switch>
-        </Router>
-      </I18nextProvider>
-    </ThemeProvider>
-  );
+    return (
+        <ThemeProvider theme={THEME[theme]}>
+            <I18nextProvider i18n={i18n}>
+                <Router history={createBrowserHistory()}>
+                    <Switch>
+                        <FullLayout exact path="/" component={Login} />
+                        <FullLayout
+                            exact
+                            path="/register"
+                            component={Register}
+                        />
+                        <Layout exact path="/dashboard" component={Dashboard} />
+                        <Layout exact path="/products" component={Products} />
+                        <Layout exact path="/editUser" component={EditUser} />
+                        <Layout exact path="/customers" component={Customers} />
+                        <DefaultLayout
+                            exact
+                            path="/homepage"
+                            component={HomePage}
+                        />
+                    </Switch>
+                </Router>
+            </I18nextProvider>
+        </ThemeProvider>
+    );
 }
